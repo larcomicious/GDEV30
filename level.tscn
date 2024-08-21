@@ -1,63 +1,49 @@
-[gd_scene load_steps=2 format=3 uid="uid://ho1gwx1tyohn"]
+[gd_scene load_steps=5 format=3 uid="uid://ho1gwx1tyohn"]
 
-[ext_resource type="PackedScene" uid="uid://dq3qgen4q0m4k" path="res://player.tscn" id="1_bmprg"]
+[ext_resource type="PackedScene" uid="uid://ckmbdwd0rkcns" path="res://player.tscn" id="1_bmprg"]
 
-[node name="TutorialLevel" type="Node3D"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1xucx"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ucweu"]
+sky_material = SubResource("ProceduralSkyMaterial_1xucx")
+
+[sub_resource type="Environment" id="Environment_uv36j"]
+background_mode = 2
+sky = SubResource("Sky_ucweu")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_uv36j")
 
 [node name="Level" type="Node3D" parent="."]
 
 [node name="Floor" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.1, -1)
 use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Floor2" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.1, -1)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Floor3" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.1, -5)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Floor4" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.1, -9)
-use_collision = true
-size = Vector3(4, 0.2, 4)
+size = Vector3(36, 0.2, 4)
 
 [node name="Floor5" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.1, -7)
 use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Floor6" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -9)
-use_collision = true
-size = Vector3(4, 0.2, 4)
+size = Vector3(16, 0.2, 8)
 
 [node name="Wall" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, 1)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 8, 2, 1)
 use_collision = true
-size = Vector3(4, 0.2, 4)
+size = Vector3(20, 0.2, 4)
 
 [node name="Wall2" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4, 2, 1)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 22, 2, -3)
 use_collision = true
-size = Vector3(4, 0.2, 4)
+size = Vector3(24, 0.2, 4)
 
 [node name="Wall3" type="CSGBox3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, -3)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Wall8" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 12, 2, -3)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Wall18" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 20, 2, -3)
 use_collision = true
 size = Vector3(4, 0.2, 4)
 
@@ -66,28 +52,8 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 24, 2,
 use_collision = true
 size = Vector3(4, 0.2, 4)
 
-[node name="Wall34" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 32, 2, -3)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
 [node name="Wall35" type="CSGBox3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 32, 2, 1)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Wall19" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 16, 2, -3)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Wall37" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 28, 2, -3)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Wall38" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 24, 2, -3)
 use_collision = true
 size = Vector3(4, 0.2, 4)
 
@@ -130,11 +96,6 @@ operation = 2
 use_collision = true
 size = Vector3(1, 0.371484, 2)
 
-[node name="Wall11" type="CSGBox3D" parent="Level"]
-transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 16, 2, 1)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
 [node name="Wall22" type="CSGBox3D" parent="Level"]
 transform = Transform3D(1, -1.74846e-07, -7.64274e-15, 0, -4.37114e-08, 1, -1.74846e-07, -1, -4.37114e-08, 20, 2, 1)
 operation = 2
@@ -147,105 +108,10 @@ operation = 2
 use_collision = true
 size = Vector3(1, 0.371484, 2)
 
-[node name="Floor7" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.1, -1)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Floor8" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.1, -1)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Floor13" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.1, -1)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Floor14" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.1, -1)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Floor15" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0.1, -1)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Floor16" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0.1, -1)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Floor25" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0.1, -1)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
 [node name="Floor17" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.1, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0.1, 5)
 use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Floor18" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.1, 3)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Floor19" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.1, 7)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Floor20" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.1, 7)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Floor21" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0.1, 3)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Floor22" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0.1, 3)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Floor23" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0.1, 7)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Floor24" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0.1, 7)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Floor9" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.1, -5)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Floor10" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.1, -9)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Floor11" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.1, -5)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Floor12" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.1, -9)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Wall6" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 8, 2, 1)
-use_collision = true
-size = Vector3(4, 0.2, 4)
+size = Vector3(16, 0.2, 8)
 
 [node name="Wall9" type="CSGBox3D" parent="Level"]
 transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 6, 2, -5)
@@ -292,50 +158,15 @@ transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.3
 use_collision = true
 size = Vector3(4, 0.2, 4)
 
-[node name="Wall25" type="CSGBox3D" parent="Level"]
-transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 16, 2, 9)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Wall26" type="CSGBox3D" parent="Level"]
-transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 20, 2, 9)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Wall29" type="CSGBox3D" parent="Level"]
-transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 24, 2, 9)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Wall30" type="CSGBox3D" parent="Level"]
-transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 28, 2, 9)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Wall7" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 12, 2, 1)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
 [node name="Wall12" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, -11)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 6, 2, -11)
 use_collision = true
-size = Vector3(4, 0.2, 4)
+size = Vector3(16, 0.2, 4)
 
 [node name="Wall13" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4, 2, -11)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 22, 2, 9)
 use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Wall14" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 8, 2, -11)
-use_collision = true
-size = Vector3(4, 0.2, 4)
-
-[node name="Wall15" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 12, 2, -11)
-use_collision = true
-size = Vector3(4, 0.2, 4)
+size = Vector3(16, 0.2, 4)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-3.78552e-08, 0.5, -0.866025, 2.18557e-08, 0.866025, 0.5, 1, 0, -4.37114e-08, -8.02866, 13.0358, 1.96566)
@@ -344,9 +175,6 @@ light_energy = 1.646
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.898028, -0.21997, 0.380998, 0, 0.866025, 0.5, -0.439939, -0.449014, 0.777715, 33.9713, 13.0358, 12.9657)
 light_energy = 0.338
-
-[node name="Player" parent="." instance=ExtResource("1_bmprg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 
 [node name="Objects" type="Node3D" parent="."]
 
@@ -359,3 +187,6 @@ size = Vector3(1, 1.92084, 3.9426)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.1295, 1.0738, -0.956849)
 use_collision = true
 size = Vector3(1, 1.92084, 3.9426)
+
+[node name="Player" parent="." instance=ExtResource("1_bmprg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -1)

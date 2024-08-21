@@ -1,44 +1,38 @@
-extends RigidBody3D
+extends CharacterBody3D
 
-var mouse_sensitivity := 0.001
-var twist_input := 0.0
-var pitch_input := 0.0
-var angular_acc := 10
 
-@onready var twist_pivot := $TwistPivot
-@onready var pitch_pivot := $TwistPivot/PitchPivot
+const SPEED = 5.0
+const JUMP_VELOCITY = 4.5
+const SENSITIVITY = 0.001
 
-# Called when the node enters the scene tree for the first time.
+var gravity = 9.8
+
+@onready var head = $Head
+@onready var camera = $Head/Camera3D
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	var input := Vector3.ZERO
-	input.x = Input.get_axis("move_left", "move_right")
-	input.z = Input.get_axis("move_forward", "move_backward")
-	
-	apply_central_force(twist_pivot.basis * input * 1200.0 * delta)
-	
-	if Input.is_action_just_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-
-	twist_pivot.rotate_y(twist_input)
-	pitch_pivot.rotate_x(pitch_input)
-	pitch_pivot.rotation.x = clamp(
-		pitch_pivot.rotation.x, 
-		-1.5,
-		0.6
-	)
-	#rotation.y = lerp(
-		#rotation.y, 
-		#atan2(-input.x, -input.z), delta * angular_acc)
-	twist_input = 0.0
-	pitch_input = 0.0
-	
-
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-			twist_input = - event.relative.x * mouse_sensitivity
-			pitch_input = - event.relative.y * mouse_sensitivity
+		head.rotate_y(-event.relative.x * SENSITIVITY)
+		camera.rotate_x(-event.relative.y * SENSITIVITY)
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
+
+func _physics_process(delta):
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
+	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
+	else:
+		velocity.x = 0.0
+		velocity.z = 0.0
+
+	move_and_slide()
