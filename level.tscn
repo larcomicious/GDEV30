@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ho1gwx1tyohn"]
 
-[ext_resource type="PackedScene" uid="uid://dq3qgen4q0m4k" path="res://player.tscn" id="1_bmprg"]
+[ext_resource type="PackedScene" uid="uid://br8wyjn150saf" path="res://player_1.tscn" id="1_irmho"]
 
 [node name="TutorialLevel" type="Node3D"]
 
@@ -345,9 +345,6 @@ light_energy = 1.646
 transform = Transform3D(0.898028, -0.21997, 0.380998, 0, 0.866025, 0.5, -0.439939, -0.449014, 0.777715, 33.9713, 13.0358, 12.9657)
 light_energy = 0.338
 
-[node name="Player" parent="." instance=ExtResource("1_bmprg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-
 [node name="Objects" type="Node3D" parent="."]
 
 [node name="Blockage" type="CSGBox3D" parent="Objects"]
@@ -359,3 +356,6 @@ size = Vector3(1, 1.92084, 3.9426)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.1295, 1.0738, -0.956849)
 use_collision = true
 size = Vector3(1, 1.92084, 3.9426)
+
+[node name="Player1" parent="." instance=ExtResource("1_irmho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -0.771479)
