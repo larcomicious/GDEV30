@@ -1,3 +1,3 @@
-# ForThesis
+# GDEV 30
 
-This repo is for code uploads related to our thesis
+This repo is for code uploads related to my GDEV 30
