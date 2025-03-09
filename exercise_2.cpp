@@ -30,13 +30,13 @@ GLuint dispMap1;
 float vertices[] =
     {
         // position (x, y, z)   color (r, g, b)     texture coordinates (s, t)
-        -0.30f, -0.50f, 0.00f,  1.0f, 1.0f, 1.0f,   0.0f, 0.0f,
-        0.30f, -0.50f, 0.00f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,
-        -0.30f, 0.50f, 0.00f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,
+        -0.30f, -0.50f, 0.00f,  1.0f, 0.0f, 0.0f,   0.0f, 0.0f,
+        0.30f, -0.50f, 0.00f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,
+        -0.30f, 0.50f, 0.00f,   0.0f, 0.0f, 1.0f,   0.0f, 1.0f,
 
-        0.30f, 0.50f, 0.00f,    1.0f, 1.0f, 1.0f,   1.0f, 1.0f,
-        -0.30f, 0.50f, 0.00f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,
-        0.30f, -0.50f, 0.00f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f
+        0.30f, 0.50f, 0.00f,    0.0f, 0.0f, 1.0f,   1.0f, 1.0f,
+        -0.30f, 0.50f, 0.00f,   0.0f, 1.0f, 0.0f,   0.0f, 1.0f,
+        0.30f, -0.50f, 0.00f,   1.0f, 0.0f, 0.0f,   1.0f, 0.0f
     };
 
 
@@ -66,12 +66,9 @@ bool setup()
     // - ... its values will NOT be normalized (GL_FALSE)
     // - ... the stride length is the number of bytes of all 3 floats of each vertex (hence, 3 * sizeof(float))
     // - ... and we start at the beginning of the array (hence, (void*) 0)
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float),
-                            (void*) 0);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float),
-                            (void*) (3 * sizeof(float)));
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float),
-                            (void*) (6 * sizeof(float)));
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*) 0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*) (3 * sizeof(float)));
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*) (6 * sizeof(float)));
 
 
     // enable the newly-created layout location 0;
@@ -85,10 +82,12 @@ bool setup()
 
     // loading the texture
     firstTexture = gdevLoadTexture("pepe.png", GL_REPEAT, true, true);
+    // firstTexture = gdevLoadTexture("stone.jpg", GL_REPEAT, true, true);
     if (! firstTexture) return false;
     secondTexture = gdevLoadTexture("gigi.png", GL_REPEAT, true, true);
     if (! secondTexture) return false;
-    dispMap1 = gdevLoadTexture("glass_disp.jpg", GL_REPEAT, true, true);
+    dispMap1 = gdevLoadTexture("glass_disp3.jpg", GL_REPEAT, true, true);
+    // dispMap1 = gdevLoadTexture("dm1.png", GL_REPEAT, true, true);
     if (! dispMap1) return false;
 
     // load our shader program
