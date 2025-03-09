@@ -13,6 +13,7 @@ out vec3 shaderColor;
 
 void main()
 {
-    gl_Position = vec4(vertexPosition.x, vertexPosition.y, vertexPosition.z, 1.0f);
+    vec2 normalized = vertexPosition.xy / 10.0; 
+    gl_Position = vec4(normalized, vertexPosition.z, 1.0f);
     shaderColor = vertexColor;
 }
