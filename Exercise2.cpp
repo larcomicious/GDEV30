@@ -752,8 +752,6 @@ int main(int argc, char** argv)
 
         // This is where the preset "mona lisa" vertices are being added
         std::vector<float> current_vertex = {vertices2[start], vertices2[start+1], vertices2[start+2], new_color[0], new_color[1], new_color[2], vertices2[start+6], vertices2[start+7], (vertices2[start]+11.0f)/22.0f, (vertices2[start+1]+11.0f)/22.0f};
-        // std::vector<float> current_vertex = {vertices2[start], vertices2[start+1], vertices2[start+2], new_color[0], new_color[1], new_color[2], 1.0f, (float) color_idx, (vertices2[start]+11.0f)/22.0f, (vertices2[start+1]+11.0f)/22.0f};
-        // std::vector<float> current_vertex = {vertices2[start], vertices2[start+1], vertices2[start+2], vertices2[start+3], vertices2[start+4], vertices2[start+5], 1.0f, (float) color_idx, (vertices2[start]+11.0f)/22.0f, (vertices2[start+1]+11.0f)/22.0f};
         vertices.insert(vertices.end(), current_vertex.begin(), current_vertex.end());
     }
     
