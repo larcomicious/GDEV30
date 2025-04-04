@@ -81,12 +81,12 @@ bool setup()
     // with unique VAO and VBO IDs, and follow the same process above to upload them to the GPU
 
     // loading the texture
-    firstTexture = gdevLoadTexture("pepe.png", GL_REPEAT, true, true);
-    // firstTexture = gdevLoadTexture("stone.jpg", GL_REPEAT, true, true);
+    // firstTexture = gdevLoadTexture("pepe.png", GL_REPEAT, true, true);
+    firstTexture = gdevLoadTexture("stone.jpg", GL_REPEAT, true, true);
     if (! firstTexture) return false;
     secondTexture = gdevLoadTexture("gigi.png", GL_REPEAT, true, true);
     if (! secondTexture) return false;
-    dispMap1 = gdevLoadTexture("glass_disp3.jpg", GL_REPEAT, true, true);
+    dispMap1 = gdevLoadTexture("glass_disp7.jpg", GL_REPEAT, true, true);
     // dispMap1 = gdevLoadTexture("dm1.png", GL_REPEAT, true, true);
     if (! dispMap1) return false;
 
