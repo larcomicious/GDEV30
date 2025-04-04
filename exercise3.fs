@@ -23,6 +23,8 @@ void main()
     //     fragmentColor = vec4(1.0f, 1.0f, 1.0f, 1.0f);
     // }
     // else 
+    
+    // chowder graphics
     if (shaderColor.x == 1.0f || shaderColor.z == 0.0f) {
         vec4 goldColor = texture(goldTex, shaderTexCoord);
         fragmentColor = goldColor;
@@ -30,5 +32,14 @@ void main()
         vec4 woodColor = texture(woodTex, shaderTexCoord);
         fragmentColor = woodColor;
     }
+    
+    // scuffed non-chowder graphics
+    // if (shaderColor.x == 1.0f || shaderColor.z == 0.0f) {
+    //     vec4 goldColor = texture(goldTex, barycoord.xy);
+    //     fragmentColor = goldColor;
+    // } else {
+    //     vec4 woodColor = texture(woodTex, barycoord.xy);
+    //     fragmentColor = woodColor;
+    // }
 
 }
