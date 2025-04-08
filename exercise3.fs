@@ -9,6 +9,11 @@
 
 in vec3 shaderColor;
 in vec3 barycoord;
+in vec3 normal;
+in vec3 fragPos;
+in vec3 trans;
+in mat3 rotate;
+in vec3 final_light_pos;
 out vec4 fragmentColor;
 uniform float is_border;
 
@@ -19,27 +24,37 @@ uniform sampler2D goldTex;
 
 void main()
 {
-    // if ((barycoord.x <= 0.0075f || barycoord.y <= 0.0075f || barycoord.z <= 0.0075f) && is_border == 0.0f) {
-    //     fragmentColor = vec4(1.0f, 1.0f, 1.0f, 1.0f);
-    // }
-    // else 
-    
-    // chowder graphics
+    float grayscale;
+    float gray_strength = 0.7;
+    // texturing
     if (shaderColor.x == 1.0f || shaderColor.z == 0.0f) {
-        vec4 goldColor = texture(goldTex, shaderTexCoord);
-        fragmentColor = goldColor;
+        vec4 gold = texture(goldTex, shaderTexCoord);
+        grayscale = mix(1.0f, gold.r, gray_strength);
     } else {
-        vec4 woodColor = texture(woodTex, shaderTexCoord);
-        fragmentColor = woodColor;
+        vec4 wood = texture(woodTex, shaderTexCoord);
+        grayscale = mix(1.0f, wood.r, gray_strength);
+    }
+
+    // lighting
+    float ambientStrength = 0.75f;
+    vec3 lightColor = vec3(1.0f, 1.0f, 1.0f);
+    vec3 ambient = ambientStrength * lightColor;
+
+    vec3 lightDir = normalize(final_light_pos - fragPos);
+    float diff = max(dot(normal, lightDir), 0.0f);
+    float light_dist = distance(final_light_pos, fragPos);
+
+    if (light_dist >= 0.15f) {
+        diff = 0.0f;
+        //light_dist = 0.0f;
     }
     
-    // scuffed non-chowder graphics
-    // if (shaderColor.x == 1.0f || shaderColor.z == 0.0f) {
-    //     vec4 goldColor = texture(goldTex, barycoord.xy);
-    //     fragmentColor = goldColor;
-    // } else {
-    //     vec4 woodColor = texture(woodTex, barycoord.xy);
-    //     fragmentColor = woodColor;
+    vec3 diffuse = diff * lightColor;
+    
+    fragmentColor = vec4((ambient + diffuse) * shaderColor * grayscale, 1.0f);
+
+    // if ((barycoord.x <= 0.0075f || barycoord.y <= 0.0075f || barycoord.z <= 0.0075f) && is_border == 0.0f) {
+    //     fragmentColor = vec4(1.0f, 1.0f, 1.0f, 1.0f);
     // }
 
 }
