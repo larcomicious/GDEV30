@@ -27,10 +27,6 @@ void main()
 {
     gl_Position = matrix * vec4(vertexPosition.x, vertexPosition.y, vertexPosition.z, 1.0f);
     
-    // mat3 normalMatrix = mat3(matrix);
-    // normalMatrix = inverse(normalMatrix);
-    // normalMatrix = transpose(normalMatrix);
-
     shaderColor = vertexColor;
     fragPos = vec3(model * vec4(vertexPosition, 1.0f));
     final_light_pos = vec3(model * vec4(lightPos, 1.0f));

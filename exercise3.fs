@@ -26,6 +26,7 @@ void main()
 {
     float grayscale;
     float gray_strength = 0.7;
+
     // texturing
     if (shaderColor.x == 1.0f || shaderColor.z == 0.0f) {
         vec4 gold = texture(goldTex, shaderTexCoord);
@@ -53,6 +54,7 @@ void main()
     
     fragmentColor = vec4((ambient + diffuse) * shaderColor * grayscale, 1.0f);
 
+    // outlines
     // if ((barycoord.x <= 0.0075f || barycoord.y <= 0.0075f || barycoord.z <= 0.0075f) && is_border == 0.0f) {
     //     fragmentColor = vec4(1.0f, 1.0f, 1.0f, 1.0f);
     // }
